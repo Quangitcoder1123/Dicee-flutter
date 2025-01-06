@@ -34,14 +34,13 @@ class DiceePage extends StatefulWidget {
 }
 
 class _DiceePageState extends State<DiceePage> {
-  int leftDiceNumber = 1, rightDiceNumber = 1;
-  void changeDice(bool side) {
+  int leftDiceNumber = 1;
+  int rightDiceNumber = 1;
+
+  void changeDice() {
     setState(() {
-      if (side == true) {
-        leftDiceNumber = Random().nextInt(6) + 1;
-      } else {
-        rightDiceNumber = Random().nextInt(6) + 1;
-      }
+      leftDiceNumber = Random().nextInt(6) + 1; // Random từ 1 đến 6
+      rightDiceNumber = Random().nextInt(6) + 1; // Random từ 1 đến 6
     });
   }
 
@@ -56,7 +55,7 @@ class _DiceePageState extends State<DiceePage> {
             splashColor: Colors.transparent,
             splashRadius: 0.1,
             onPressed: () {
-              changeDice(true);
+              changeDice(); // Khi bấm sẽ thay đổi cả hai ảnh xúc xắc
             },
             icon: Image.asset(
               "images/dice$leftDiceNumber.png",
@@ -66,7 +65,7 @@ class _DiceePageState extends State<DiceePage> {
         Expanded(
           child: IconButton(
             onPressed: () {
-              changeDice(false);
+              changeDice();
             },
             padding: const EdgeInsets.all(16),
             splashColor: Colors.transparent,
